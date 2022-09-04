@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1.3
 
-ARG PYTHON_VERSION
+ARG PYTHON_VERSION=3.10.5
 FROM python:${PYTHON_VERSION}-slim-bullseye as base
 
 RUN apt-get update \
@@ -41,7 +41,7 @@ RUN apt-get update \
 
 FROM build_deps as frappe_builder
 
-ARG FRAPPE_VERSION
+ARG FRAPPE_VERSION=v14.5.0
 ARG FRAPPE_REPO=https://github.com/frappe/frappe
 RUN --mount=type=cache,target=/root/.cache/pip \
     git clone --depth 1 -b ${FRAPPE_VERSION} ${FRAPPE_REPO} apps/frappe \

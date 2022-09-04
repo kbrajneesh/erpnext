@@ -13,7 +13,7 @@ WORKDIR /frappe-bench
 RUN mkdir -p sites/assets /out/assets \
     && echo frappe >sites/apps.txt
 
-ARG FRAPPE_VERSION
+ARG FRAPPE_VERSION=v14.5.0
 ARG FRAPPE_REPO=https://github.com/frappe/frappe
 # Install development node modules
 RUN git clone --depth 1 -b ${FRAPPE_VERSION} ${FRAPPE_REPO} apps/frappe \
